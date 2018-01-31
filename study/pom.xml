@@ -7,13 +7,14 @@
   <packaging>pom</packaging>
   <modules>
     <module>test</module>
+    <module>noConfigurationXml</module>
   </modules>
   
     <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
      <org.springframework.version>4.3.8.RELEASE</org.springframework.version>
      <spring-sercurity.version>4.2.2.RELEASE</spring-sercurity.version>
-     <!-- mybatis版本号 -->  
+     <!-- mybatis版本�? -->  
       <mybatis.version>3.2.6</mybatis.version>  
   </properties>
   
@@ -59,7 +60,7 @@
         <artifactId>spring-security-config</artifactId>
         <version>${spring-sercurity.version}</version>
     </dependency>
-     <!-- 数据库 -->
+     <!-- 数据�? -->
     <!-- dataSource configuration -->
 	<dependency>
 		<groupId>commons-dbcp</groupId>
