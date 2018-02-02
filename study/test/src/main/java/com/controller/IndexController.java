@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.Util.UserUtil;
-import com.pojo.vo.User;
+import com.annotation.ControllerLogAnnotation;
 import com.service.IndexService;
 
 @Controller
@@ -18,14 +17,10 @@ public class IndexController {
 	
 	@RequestMapping(value="/sudentName/{id}")
 	@ResponseBody
+	@ControllerLogAnnotation
 	public String getName(@PathVariable Integer id){
 		return indexService.getNameById(id);
 	}
 	
-	@RequestMapping(value="/getLoginUser")
-	@ResponseBody
-	public Object getName(){
-		return UserUtil.getLoginUer();
-	}
 	
 }
