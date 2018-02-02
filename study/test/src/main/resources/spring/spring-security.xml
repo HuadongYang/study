@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
-        xmlns="http://www.springframework.org/schema/security"
-        xmlns:beans="http://www.springframework.org/schema/beans"
+<beans
+        xmlns:sec="http://www.springframework.org/schema/security"
+        xmlns="http://www.springframework.org/schema/beans"
         xmlns:p="http://www.springframework.org/schema/p"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:context="http://www.springframework.org/schema/context"
@@ -12,15 +12,38 @@
           http://www.springframework.org/schema/security
               http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="true" >
+    <!-- <http auto-config="true" use-expressions="true">
+   		 <intercept-url pattern="/**/sudentName/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />  
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-    </http>
+    </http> -->
+    
+    <sec:http>  
+        <!--路径'/admin/*'需要权限ROLE_ADMIN-->  
+        <!-- <sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>  --> 
+        <!--以"/user"开头的所有路径需要ROLE_USER权限-->  
+        <sec:intercept-url pattern="/**/sudentName/**" access="hasRole('ROLE_USER')" />  
+        
+        <!--制定自定义的登录路径为/login，登录后默认跳转/welcome-->  
+        <!-- <sec:form-login login-page="/login" default-target-url="/welcome" />   -->
+        <!--指定使用默认登出页面，登出后跳转到/login?logout页面-->  
+       <!--  <sec:logout logout-success-url="/login?logout"/>   -->
+        <!--对于没有权限的页面跳转到/403路径-->  
+        <sec:form-login />  
+		<sec:logout />  
+        <sec:access-denied-handler error-page="/403" />  
+        <sec:csrf/>  
+    </sec:http>
 
-    <authentication-manager>
+    <sec:authentication-manager>  
+        <sec:authentication-provider user-service-ref="securityUserDetailsService"/>  
+    </sec:authentication-manager> 
+    <!-- <bean id="securityUserDetailsService"  
+          class="com.config.SecurityUserDetailsService"/> -->
+    <!-- <authentication-manager>
         <authentication-provider>
             <user-service>
                 <user name="admin" password="123456" authorities="ROLE_USER"/>
             </user-service>
         </authentication-provider>
-    </authentication-manager>
-</beans:beans>
+    </authentication-manager> -->
+</beans>
