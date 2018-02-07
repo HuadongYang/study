@@ -18,7 +18,7 @@ public class MyWebAppInitializer implements WebApplicationInitializer{
 		System.out.println("MyWebAppInitializer start ------------");
 		
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();  
-        rootContext.register(AppConfig.class);
+        rootContext.register(AppConfig.class, SecurityConfig.class);
 		
         servletContext.addListener(new ContextLoaderListener(rootContext));  
         

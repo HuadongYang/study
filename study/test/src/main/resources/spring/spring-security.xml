@@ -21,8 +21,7 @@
         <!--路径'/admin/*'需要权限ROLE_ADMIN-->  
         <!-- <sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>  --> 
         <!--以"/user"开头的所有路径需要ROLE_USER权限-->  
-        <sec:intercept-url pattern="/**/sudentName/**" access="hasRole('ROLE_USER')" />  
-        
+        <sec:intercept-url pattern="/**/studentName/**" access="hasRole('ROLE_USER')" />
         <!--制定自定义的登录路径为/login，登录后默认跳转/welcome-->  
         <!-- <sec:form-login login-page="/login" default-target-url="/welcome" />   -->
         <!--指定使用默认登出页面，登出后跳转到/login?logout页面-->  

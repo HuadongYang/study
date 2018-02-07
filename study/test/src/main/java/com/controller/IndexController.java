@@ -14,7 +14,7 @@ public class IndexController {
 	@Autowired
 	IndexService indexService;
 	
-	@RequestMapping(value="/sudentName/{id}")
+	@RequestMapping(value="/studentName/{id}")
 	@ResponseBody
 	@ControllerLogAnnotation
 	public String getName(@PathVariable Integer id){

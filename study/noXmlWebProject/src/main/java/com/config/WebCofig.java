@@ -16,7 +16,7 @@ public class WebCofig {
 		System.out.println("WebCofig start ------------");
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setSuffix(".jsp");
-		viewResolver.setPrefix("/WEB-INF/jsp/");
+		viewResolver.setPrefix("/WEB-INF/views/");
 		return viewResolver;
 	}
 }
