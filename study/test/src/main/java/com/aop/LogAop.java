@@ -35,7 +35,8 @@ public class LogAop {
     	
     	HashMap<String, Object> inputParam = new HashMap<String, Object>();
     	inputParam.put("uri", uri);
-    	inputParam.put("RequestBody", map);
+    	String body = JsonUtil.objectToJson(map);
+    	inputParam.put("RequestBody", body);
     	logger.info(JsonUtil.objectToJson(inputParam));
     }
 	
